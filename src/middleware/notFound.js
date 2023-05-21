@@ -1,18 +1,29 @@
-const express = require('express');
-const app = express();
+const db = require('../config/db');
 
-app.get('/todos/:id', (req, res) => {
-    const todoId = req.params.id;
-    const todo = findTodoById(todoId);
+exports.check_id = (req, res, next) => {
+    todo_id = req.params.id;
 
-    if (!todo)
-        res.status(404).json({msg: "Not found"});
-});
+    if (todo_id) {
+        db.execute('SELECT * FROM `todo` WHERE `id` = ?', [todo_id], (error, results, fields) => {
+            if (results.length > 0)
+                next();
+            else
+                res.status(404).json({ msg: 'Not found' });
+        });
+    } else
+        res.status(500).json({ msg: 'Internal server error' });
+}
 
-app.get('/users/:id', (req, res) => {
-    const userId = req.params.id;
-    const user = findUserById(userId);
+exports.check_user_id = (req, res, next) => {
+    user_id = req.params.id;
 
-    if (!user)
-        res.status(404).json({msg: "Not found"});
-});
+    if (user_id) {
+        db.execute('SELECT * FROM `user` WHERE `id` = ?', [user_id], (error, results, fields) => {
+            if (results.length > 0)
+                next();
+            else
+                res.status(404).json({ msg: 'Not found' });
+        });
+    } else
+        res.status(500).json({ msg: 'Internal server error' });
+}
