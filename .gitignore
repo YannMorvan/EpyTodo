@@ -2,3 +2,4 @@ node_modules
 package-lock.json
 coding-style-reports.log
 .env
+regex.js
