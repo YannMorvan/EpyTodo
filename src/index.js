@@ -27,7 +27,7 @@ app.use(express.json({
 
 app.use('/', require('./routes/auth/auth.js'));
 app.use('/user', auth, userRouter);
-// app.use('/todos', auth, todosRoutes);
+app.use('/todos', auth, todosRoutes);
 
 app.use("*", (req, res) => res.status(404).json({ msg: 'Not Found' }));
 

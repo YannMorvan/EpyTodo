@@ -1,6 +1,6 @@
 const express = require ('express')
 const bcrypt = require ('bcrypt')
-//const { register, login } = require ('user/user.query')
+const { register, login } = require ('../user/user.query')
 const router = express.Router();
 
 router.post('/register', (req, res) => {
