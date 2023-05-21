@@ -10,8 +10,17 @@ router.post('/register', (req, res) => {
     var password = req.body.password;
 
     if (!email || !name || !firstname || !password || !email.match(regex))
-        return res.status(400).json({ msg: 'Bad parameter' });
+        return res.status(400).json({ msg: "Bad parameter" });
     register(res, email, name, firstname, password);
 })
+
+router.post('/login', (req, res) => {
+    var email = req.body.email;
+    var password = req.body.password;
+
+    if (!email || !password)
+        return res.status(400).json({ msg: "Invalid Credentials" });
+    login(res, email, password);
+});
 
 module.exports = router;
