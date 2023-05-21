@@ -6,7 +6,7 @@ app.get('/todos/:id', (req, res) => {
     const todo = findTodoById(todoId);
 
     if (!todo)
-        res.status(404).json({msg: 'Not found'});
+        res.status(404).json({msg: "Not found"});
 });
 
 app.get('/users/:id', (req, res) => {
@@ -14,7 +14,5 @@ app.get('/users/:id', (req, res) => {
     const user = findUserById(userId);
 
     if (!user)
-        res.status(404).json({msg: 'Not found'});
+        res.status(404).json({msg: "Not found"});
 });
-
-module.exports = router;

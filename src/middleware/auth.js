@@ -14,6 +14,6 @@ module.exports = (req, res, next) => {
             }
         });
     } catch (error) {
-        res.status(401).json({ msg: 'No token, authorization denied' });
+        res.status(401).json({ msg: "No token, authorization denied" });
     }
 };
